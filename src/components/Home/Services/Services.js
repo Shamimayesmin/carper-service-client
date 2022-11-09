@@ -24,13 +24,13 @@ const Services = () => {
 			</div>
 
 			<div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-32">
-				{services.slice(0,3).map((service) => (
+				{services.map((service) => (
 					<ServiceCard key={service._id} service={service}></ServiceCard>
 				))}
 			</div>
-            <div className='mb-20 flex justify-center'>
+            {/* <div className='mb-20 flex justify-center'>
                 <Link to='/services' className='rounded-lg bg-teal-400 py-5 px-6'><button className=''>See All</button></Link>
-            </div>
+            </div> */}
 		</div>
     );
 };

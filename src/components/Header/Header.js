@@ -15,19 +15,23 @@ const Header = () => {
 
     const menuItems = <>
                 <li className="font-semibold"><Link to='/'>Home</Link></li>
+				<li className="font-semibold"><Link to='/services'>Services</Link></li>
         
 		
-				<li className="font-semibold"><Link to='/services'>Services</Link></li>
+		{
+			user?.email?
+			<>
 				<li className="font-semibold"><Link to='/myservice'>My Services</Link></li>
-				<li className="font-semibold"><Link to='/addreview'>Add Review</Link></li>
-				<li className="font-semibold"><Link to='/blog'>Blog</Link></li>
-                 
+				<li className="font-semibold"><Link to='/myreview'>My Review</Link></li>
 				<li className="font-semibold">
 					<button onClick={handleLogOut} className="btn-ghost">Sign Out</button>
 				</li>
-			
-			
-			    <li className="font-semibold"><Link to='/login'>Login</Link></li>
+			</>
+			:
+			<li className="font-semibold"><Link to='/login'>Login</Link></li>
+		}	
+				<li className="font-semibold"><Link to='/blog'>Blog</Link></li>
+			    
 		
             </>
     return (

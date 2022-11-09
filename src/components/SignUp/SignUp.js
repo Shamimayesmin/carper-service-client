@@ -13,14 +13,18 @@ const SignUp = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+		// const photoURL = form.photoURL.value
 
         createUser(email, password)
         .then(result =>{
             const user = result.user;
             console.log(user)
+			form.reset();
         })
         .catch(err =>console.log(err))
     }
+
+	
     return (
         <div>
             <div className="hero w-full my-20">
@@ -42,6 +46,17 @@ const SignUp = () => {
 								className="input input-bordered"
 							/>
 						</div>
+						{/* <div className="form-control">
+							<label className="label">
+								<span className="label-text">Photo</span>
+							</label>
+							<input
+								type="text"
+                                name="photoURL"
+								placeholder="Your Photo URL"
+								className="input input-bordered"
+							/>
+						</div> */}
 						<div className="form-control">
 							<label className="label">
 								<span className="label-text">Email</span>
