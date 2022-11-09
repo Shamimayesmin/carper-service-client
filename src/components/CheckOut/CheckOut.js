@@ -25,8 +25,6 @@ const CheckOut = () => {
 			price,
 			customer: name,
 			email,
-            
-			
 			message,
 		};
         fetch("http://localhost:5000/reviews", {
@@ -49,8 +47,7 @@ const CheckOut = () => {
     return (
         <div>
             <form onSubmit={handlePlaceOrder}>
-				<h2 className="text-4xl">You are about to order : {title}</h2>
-				<h4 className="text-3xl">price: {price}</h4>
+				
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 					<input
 						name="firstName"
