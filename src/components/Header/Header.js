@@ -63,8 +63,11 @@ const Header = () => {
 							{menuItems}
 						</ul>
 					</div>
-					<Link to='/' className="btn btn-ghost normal-case text-xl">
-                        <img className='w-16 h-16 mb-5' src={headerLogo} alt="" />
+					<Link to='/' className="btn btn-ghost justify-center content-center normal-case py-2">
+                        
+						<img className='w-16 h-16 mx-auto rounded-2xl' src={headerLogo} alt="" />
+						<span className='text-3xl text-orange-400'>Carper</span>
+						
                     </Link>
 				</div>
 				<div className="navbar-center hidden lg:flex">
