@@ -15,17 +15,32 @@ const Blog = () => {
 					<div className="space-y-4">
 						<details className="w-full border rounded-lg">
 							<summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
-								Ex orci laoreet egestas sapien magna egestas scelerisque?
+							What is the difference between SQL and NoSQL?
 							</summary>
 							<p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
-								Lectus iaculis orci metus vitae ligula dictum per. Nisl per
-								nullam taciti at adipiscing est.{" "}
+								<strong>SQL</strong>
+								<br />
+								 1.RELATIONAL DATABASE MANAGEMENT SYSTEM (RDBMS) <br />
+								2.These databases have fixed or static or predefined schema.
+								<br />
+								3.These databases are not suited for hierarchical data storage.
+								<br />
+								4.These databases are best suited for complex queries
+								<br />
+								<strong>NoSQL</strong>
+								<br />
+								1.Non-relational or distributed database system.
+								<br />
+								2.They have dynamic schema
+								<br />
+								3.These databases are best suited for hierarchical data storage.
+								<br />
+								4.These databases are not so good for complex queries
 							</p>
 						</details>
 						<details className="w-full border rounded-lg">
 							<summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
-								Lorem at arcu rutrum viverra metus sapien venenatis lobortis
-								odio?
+							What is JWT, and how does it work?
 							</summary>
 							<p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
 								Tincidunt ut hac condimentum rhoncus phasellus nostra. Magna
