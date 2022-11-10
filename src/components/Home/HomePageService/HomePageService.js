@@ -1,29 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import HomePageServiceCard from './HomePageServiceCard';
 
 const HomePageService = () => {
-    const [services, setServices] = useState([])
+    const {user} = useContext(AuthContext)
+    const [addservices, setAddServices] = useState([])
+
     useEffect( () =>{
-        fetch('http://localhost:5000/services')
+        fetch(`http://localhost:5000/addService?email=${user?.email}`)
         .then((res) => res.json())
-        .then((data) => setServices(data))
-    },[]);
+        .then((data) => setAddServices(data))
+    },[user?.email]);
+
     return (
         <div>
         <div className="text-center mt-5">
             <p className="text-2xl font-bold text-orange-600">Services</p>
             <h2 className="text-5xl font-semibold">Quality wooden products</h2>
             <p className="mt-5">
-                the majority have suffered alteration in some form, by injected
-                humour, or randomised <br /> words which don't look even slightly
-                believable.
+                There is a number of service I provide since a many years.
+                <br />
+                You will get quality servive 
             </p>
         </div>
 
         <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-32">
-            {services.slice(0,3).map((service) => (
-                <HomePageServiceCard key={service._id} service={service}></HomePageServiceCard>
+            {addservices.slice(-3).reverse().map((serv) => (
+                <HomePageServiceCard key={serv._id} serv={serv}></HomePageServiceCard>
             ))}
         </div>
         <div className='mb-20 flex justify-center'>

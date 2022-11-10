@@ -2,9 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import Blog from "../components/Blog/Blog";
 import CheckOut from "../components/CheckOut/CheckOut";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import AddCheckOut from "../components/Home/AddCheckOut/AddCheckOut";
+import AddService from "../components/Home/AddService/AddService";
 import Home from "../components/Home/Home/Home";
 import ServiceDetails from "../components/Home/Services/ServiceDetails";
 import Services from "../components/Home/Services/Services";
+
 import Login from "../components/Login/Login";
 import Review from "../components/Review/Review";
 import ReviewBox from "../components/ReviewBox/ReviewBox";
@@ -55,11 +58,11 @@ const router = createBrowserRouter([
                 loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`) 
 
             },
-            // {
-            //     path : '/checkout/:id',
-            //     element : <CheckOut></CheckOut>,
-            //     loader :({params}) => fetch(`http://localhost:5000/services/${params.id}`)  
-            // },
+            {
+                path : '/checkout/:id',
+                element : <CheckOut></CheckOut>,
+                loader :({params}) => fetch(`http://localhost:5000/services/${params.id}`)  
+            },
             {
                 path : '/checkout',
                 element : <CheckOut></CheckOut>,
@@ -68,7 +71,17 @@ const router = createBrowserRouter([
             {
                 path : '/myreview',
                 element : <Review></Review>
+            },
+            {
+                path : '/allservice',
+                element : <AddService></AddService>
+            },
+            {
+                path : '/servicecheck/:id',
+                element : <AddCheckOut></AddCheckOut>,
+                loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`)  
             }
+            
 
 
 
