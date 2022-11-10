@@ -8,7 +8,7 @@ const HomePageServiceCard = ({serv}) => {
     // console.log(serv);
 
     
-    const {serviceName, price, phone, customer, service, _id, status,description} = serv;
+    const { price, service, _id, status,description} = serv;
     const [addCard , setAddCard] = useState({})
 
 
@@ -32,8 +32,7 @@ const HomePageServiceCard = ({serv}) => {
         </figure>
         <div className="card-body">
             <h2 className="card-title">{addCard.title}</h2>
-            {/* <p className="">{addCard?.description}</p> */}
-            {/* <p className="">{addCard?.description.length > 100 ? '...' : ''}</p> */}
+            
             <p className="">{addCard?.description?.slice(0,100)+ '...'}</p>
             <p className="text-2xl text-orange-600 font-semibold">Price : ${price}</p>
             <p className='text-lg text-orange-400'>Rating : {4.5}</p>

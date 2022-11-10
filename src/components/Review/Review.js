@@ -8,7 +8,7 @@ import ReviewBox from "../ReviewBox/ReviewBox";
 const Review = () => {
     // const { _id} = useLoaderData()
 	const [reviews, setReviews] = useState([])
-	const { user } = useContext(AuthContext);
+	const { user,logOut } = useContext(AuthContext);
 
     useTitle('MyReview')
 
@@ -34,20 +34,42 @@ const Review = () => {
     }
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-        .then(res => res.json())
-        .then(data => setReviews(data))
-    },[user?.email])
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+            // jwt token access
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("carper-token")}`,
+            },
+        })
+        
+        .then((res) => {
+            if (res.status === 401 || res.status === 403) {
+                return logOut();
+            }
+            return res.json();
+        })
+
+        .then(data => {
+            console.log('recive',data);
+            setReviews(data)
+        })
+    },[user?.email,logOut])
+
+
 	return (
 		<div>
             <div className="grid grid-cols-1">
-            <h2 className="text-xl mt-4">You have {reviews.length} reviews</h2>
+            
 			{
-               reviews.map((review) =><ReviewBox 
+                reviews.length > 0? (
+                    reviews.map((review) =><ReviewBox 
                key={review._id}
                 review={review}
                 handleDelete={handleDelete}
                ></ReviewBox>) 
+
+                ) : (<p className="text-3xl flex justify-center max-auto">No reviews</p>)
+                
+               
             }
 		</div>
         <>

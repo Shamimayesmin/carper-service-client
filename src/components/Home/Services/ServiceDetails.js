@@ -27,9 +27,12 @@ const ServiceDetails = () => {
 					<p className='text-lg text-orange-400'>Rating : {4.5}</p>
 					
 				</div>
+
+				
 			</div>
 			<div>
 				<Review></Review>
+
 			</div>
 
     </div>

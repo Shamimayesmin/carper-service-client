@@ -38,7 +38,7 @@ const CheckOut = () => {
 			.then((data) => {
 				console.log(data);
 				if (data.acknowledged) {
-					toast.success("order placed");
+					toast.success("Review added");
 					form.reset();
 				}
 			})

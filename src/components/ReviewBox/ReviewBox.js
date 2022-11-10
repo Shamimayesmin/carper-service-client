@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const ReviewBox = ({ review, handleDelete }) => {
-	const { customer, _id, message } = review;
+	const { customer, _id, message , service } = review;
 
 	// const [details, setDetails] = useState({});
 

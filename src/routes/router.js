@@ -75,7 +75,7 @@ const router = createBrowserRouter([
             },
             {
                 path : '/allservice',
-                element : <AddService></AddService>
+                element : <PrivateRoute><AddService></AddService></PrivateRoute>
             },
             {
                 path : '/servicecheck/:id',
