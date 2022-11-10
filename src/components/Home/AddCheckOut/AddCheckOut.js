@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../hook/useTitle';
 
 const AddCheckOut = () => {
     const { title, price, _id } = useLoaderData();
 	const { user } = useContext(AuthContext);
+	useTitle('Checkout')
 
 	const handlePlaceOrder = (event) => {
 		event.preventDefault();
@@ -43,7 +46,7 @@ const AddCheckOut = () => {
 			.then((data) => {
 				console.log(data);
 				if (data.acknowledged) {
-					alert("order placed");
+					toast.success("Service added successfully");
 					form.reset();
 				}
 			})
@@ -53,9 +56,9 @@ const AddCheckOut = () => {
     return (
         <div>
            <form onSubmit={handlePlaceOrder}>
-				<h2 className="text-4xl">You are about to order : {title}</h2>
-				<h4 className="text-3xl">price: {price}</h4>
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+				<h2 className="text-3xl">Add your service : {title}</h2>
+				<h4 className="text-2xl">price: {price}</h4>
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-7">
 					<input
 						name="firstName"
 						type="text"
@@ -91,7 +94,7 @@ const AddCheckOut = () => {
 					placeholder="Your Message"
 				></textarea>
 
-				<input className="btn" type="submit" value="Place your order" />
+				<input className="btn mt-4 mb-7" type="submit" value="Place your order" />
 			</form> 
         </div>
     );

@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 
+
 const HomePageServiceCard = ({serv}) => {
     // console.log(serv);
 
+    
     const {serviceName, price, phone, customer, service, _id, status,description} = serv;
     const [addCard , setAddCard] = useState({})
 
-
-    // const string = description || ''
-    // const str = string.slice(0,100)
 
     useEffect(()=>{
         fetch(`http://localhost:5000/services/${service}`)

@@ -2,12 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import useTitle from "../../hook/useTitle";
 import ReviewBox from "../ReviewBox/ReviewBox";
 
 const Review = () => {
     // const { _id} = useLoaderData()
 	const [reviews, setReviews] = useState([])
 	const { user } = useContext(AuthContext);
+
+    useTitle('MyReview')
 
 
     // review delete 

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../../hook/useTitle';
 import Review from '../../Review/Review';
 
 const ServiceDetails = () => {
+	useTitle('Details')
     const details = useLoaderData()
     const {img, title, description, price,_id} = details
     console.log(details);
