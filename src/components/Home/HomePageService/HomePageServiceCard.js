@@ -9,6 +9,10 @@ const HomePageServiceCard = ({serv}) => {
     const {serviceName, price, phone, customer, service, _id, status,description} = serv;
     const [addCard , setAddCard] = useState({})
 
+
+    // const string = description || ''
+    // const str = string.slice(0,100)
+
     useEffect(()=>{
         fetch(`http://localhost:5000/services/${service}`)
         .then(res =>res.json())
@@ -19,22 +23,24 @@ const HomePageServiceCard = ({serv}) => {
         <div className="card card-compact w-96 bg-base-100 shadow-2xl mt-12">
         <figure>
             <PhotoProvider>
-				<PhotoView src={addCard.img}>
-					<img className="p-6 rounded-lg" src={addCard.img} alt="" />
+				<PhotoView src={addCard?.img}>
+					<img className="p-6 rounded-lg" src={addCard?.img} alt="" />
 				</PhotoView>
 			</PhotoProvider>
 
-            {/* <img className="p-6 rounded-lg scale-100 hover:scale-110 ease-in duration-500" src={img} alt="Shoes" /> */}
+            
             
         </figure>
         <div className="card-body">
             <h2 className="card-title">{addCard.title}</h2>
-            {/* <p className="">{addCard?.description?.length> 100 ? <>{description.slice(0,100) +'...'}</> : <>{description} </>}</p> */}
+            {/* <p className="">{addCard?.description}</p> */}
+            {/* <p className="">{addCard?.description.length > 100 ? '...' : ''}</p> */}
+            <p className="">{addCard?.description?.slice(0,100)+ '...'}</p>
             <p className="text-2xl text-orange-600 font-semibold">Price : ${price}</p>
             <p className='text-lg text-orange-400'>Rating : {4.5}</p>
             <div className="card-actions justify-end">
                 <Link
-                     to={`/details/${_id}`}>
+                     to={`/details/${addCard._id}`}>
                     <button className="btn btn-primary">View Detaills</button>
                 </Link>
             </div>
