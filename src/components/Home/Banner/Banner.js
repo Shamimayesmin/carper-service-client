@@ -31,18 +31,7 @@ const bannerData = [
         id: 4,
         next: 1
     },
-    // {
-    //     image: img5,
-    //     prev: 4,
-    //     id: 5,
-    //     next: 6
-    // },
-    // {
-    //     image: img6,
-    //     prev: 5,
-    //     id: 6,
-    //     next: 1
-    // }
+    
 ]
 
 const Banner = () => {

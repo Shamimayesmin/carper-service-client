@@ -30,9 +30,7 @@ const Services = () => {
 					<ServiceCard key={service._id} service={service}></ServiceCard>
 				))}
 			</div>
-			{/* <div className='mb-20 flex justify-center'>
-                <Link to='/services' className='rounded-lg bg-teal-400 py-5 px-6'><button className=''>See All</button></Link>
-            </div> */}
+			
 		</div>
 	);
 };

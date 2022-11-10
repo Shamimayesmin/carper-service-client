@@ -14,11 +14,7 @@ const ServiceCard = ({ service }) => {
 					</PhotoView>
 				</PhotoProvider>
 
-				{/* <img
-					className="p-6 rounded-lg scale-100 hover:scale-110 ease-in duration-500"
-					src={img}
-					alt="Shoes"
-				/> */}
+				
 			</figure>
 			<div className="card-body">
 				<h2 className="card-title">{title}</h2>

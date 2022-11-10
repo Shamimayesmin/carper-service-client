@@ -1,8 +1,13 @@
 import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const SocialLogin = () => {
     const {googleSignIn} = useContext(AuthContext)
+
+    const location = useLocation();
+	const navigate = useNavigate();
+	const from = location.state?.from?.pathname || "/";
 
     const handleGoogleSignIn = () =>{
         googleSignIn()
@@ -10,25 +15,25 @@ const SocialLogin = () => {
             const user = result.user;
             console.log(user)
 
-            // const currentUser = {
-            //     email: user.email,
-            // };
+            const currentUser = {
+                email: user.email,
+            };
 
-            // fetch("https://genius-car-server-rust.vercel.app/jwt", {
-			// 		method: "POST",
-			// 		headers: {
-			// 			"content-type": "application/json",
-			// 		},
-			// 		body: JSON.stringify(currentUser),
-			// 	})
-			// 		.then((res) => res.json())
-			// 		.then((data) => {
-			// 			console.log(data);
+            fetch("https://assignment-11-server-omega.vercel.app/jwt", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify(currentUser),
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						console.log(data);
 
-			// 			// local storage is the easiest but not the best place to store jwt token
-			// 			localStorage.setItem("genius-token", data.token);
 						
-			// 		});
+						localStorage.setItem("carper-token", data.token);
+						navigate(from, { replace: true });
+					});
         })
         .catch(err => console.error(err))
     }
