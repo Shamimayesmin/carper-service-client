@@ -2,17 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 
 
 const ReviewBox = ({ review, handleDelete }) => {
-	const { customer, _id, message, service } = review;
+	const { customer, _id, message } = review;
 
-	// const [details, setDetails] = useState({});
-
-	// const {user} = useContext(AuthContext)
-
-	// useEffect(()=>{
-	//     fetch(`https://assignment-11-server-omega.vercel.app/services/${service}`)
-	//     .then(res =>res.json())
-	//     .then(data => setDetails(data))
-	// },[service])
+	
 
 	return (
 		<div>
@@ -33,10 +25,8 @@ const ReviewBox = ({ review, handleDelete }) => {
 							</div>
 						</div>
 						<div className="flex items-center space-x-2 dark:text-yellow-500">
-							{/* <Link to='/modal'><span  className="btn">Edit</span></Link> */}
-							<label htmlFor="my-modal-3" className="btn">
-								open modal
-							</label>
+							<span  className="btn">Edit</span>
+							
 							<span onClick={() => handleDelete(_id)} className="btn">
 								Delete
 							</span>

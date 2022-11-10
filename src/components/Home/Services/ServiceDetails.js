@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../../hook/useTitle';
 import Review from '../../Review/Review';
@@ -6,14 +6,11 @@ import Review from '../../Review/Review';
 const ServiceDetails = () => {
 	useTitle('Details')
     const details = useLoaderData()
-    const {img, title, description, price,_id} = details
+    const {img, title, description, price} = details
     console.log(details);
-	const [reviews, setReviews] = useState([])
-	const [text, setText] = useState('')
+	
 
-	useEffect(() =>{
-
-	},[])
+	
     return (
         <div>
             <div className="card card-compact w-2/3 mx-auto bg-base-100 shadow-2xl mt-12">

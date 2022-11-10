@@ -6,6 +6,8 @@ import HomePageServiceCard from "./HomePageServiceCard";
 const HomePageService = () => {
 	const { user } = useContext(AuthContext);
 	const [addservices, setAddServices] = useState([]);
+	const [added, setAdded] = useState([]);
+
 
 	useEffect(() => {
 		fetch(
@@ -14,6 +16,30 @@ const HomePageService = () => {
 			.then((res) => res.json())
 			.then((data) => setAddServices(data));
 	}, [user?.email]);
+
+	
+
+
+	// const handleAdded = (id) => {
+	// 	const procced = window.confirm("Do you want to delete this review");
+	// 	if (procced) {
+	// 		fetch(`https://assignment-11-server-omega.vercel.app/services/${id}`, {
+	// 			method: "POST",
+	// 			headers: {
+	// 				 			"content-type": "application/json",
+	// 						},
+	// 		})
+	// 			.then((res) => res.json())
+	// 			.then((data) => {
+	// 				console.log(data);
+	// 				if (data.deletedCount > 0) {
+	// 					// toast.success("deleted successfully");
+	// 					const remaining = added.filter((rev) => rev._id !== id);
+	// 					setAdded(remaining);
+	// 				}
+	// 			});
+	// 	}
+	// };
 
 	return (
 		<div>
@@ -35,6 +61,7 @@ const HomePageService = () => {
 						<HomePageServiceCard
 							key={serv._id}
 							serv={serv}
+							
 						></HomePageServiceCard>
 					))}
 			</div>

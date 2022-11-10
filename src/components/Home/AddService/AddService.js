@@ -11,6 +11,8 @@ const AddService = () => {
 			.then((res) => res.json())
 			.then((data) => setAddService(data));
 	}, []);
+
+
 	return (
 		<div>
 			<div className="text-center mt-5">
@@ -25,7 +27,10 @@ const AddService = () => {
 
 			<div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-32">
 				{addService.map((service) => (
-					<AddServiceCard key={service._id} service={service}></AddServiceCard>
+					<AddServiceCard key={service._id}
+					 service={service}
+					 
+					></AddServiceCard>
 				))}
 			</div>
 			{/* <div className='mb-20 flex justify-center'>

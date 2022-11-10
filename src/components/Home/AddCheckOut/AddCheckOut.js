@@ -26,14 +26,10 @@ const AddCheckOut = () => {
 			email,
 			phone,
 			message,
+		
 		};
 
-		// if(phone.length > 10){
-		//     alert('phone number should be 10 character')
-		// }
-		// else{
-
-		// }
+		
 
 		fetch("https://assignment-11-server-omega.vercel.app/addService", {
 			method: "POST",
@@ -86,6 +82,7 @@ const AddCheckOut = () => {
 						className="input input-bordered w-full"
 						readOnly
 					/>
+					
 				</div>
 
 				<textarea

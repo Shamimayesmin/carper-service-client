@@ -1,17 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AddServiceCard = ({service}) => {
+const AddServiceCard = ({service,handleAdded}) => {
     const { img, price, title, _id, description } = service;
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-2xl mt-12">
 			<figure>
-				{/* <PhotoProvider>
-					<PhotoView src={img}>
-						<img className="p-6 rounded-lg" src={img} alt="" />
-					</PhotoView>
-				</PhotoProvider> */}
-
+				
 				<img
 					className="p-6 rounded-lg scale-100 hover:scale-110 ease-in duration-500"
 					src={img}
@@ -29,6 +24,7 @@ const AddServiceCard = ({service}) => {
 					<Link to={`/servicecheck/${_id}`}>
 						<button className="btn btn-primary">Add service</button>
 					</Link>
+					
 				</div>
 			</div>
 		</div>
