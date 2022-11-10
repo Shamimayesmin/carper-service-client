@@ -16,78 +16,91 @@ import Main from "../layout/Main";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
-    {
-        path : '/',
-        element : <Main></Main>,
-        errorElement : <ErrorPage></ErrorPage>,
-        children : [
-            {
-                path : '/',
-                element : <Home></Home>
-            },
-            {
-                path : '/login',
-                element : <Login></Login>
-            },
-            {
-                path : '/signup',
-                element : <SignUp></SignUp>
-            },
-            {
-                path : '/blog',
-                element : <Blog></Blog>
-            },
-            {
-                path : '/services',
-                element : <Services></Services>
-            },
-            {
-                path : '/details/:id',
-                element : <ServiceDetails></ServiceDetails>,
-                loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
-            },
-            {
-                path: '/reviewbox/:id',
-                element : <ReviewBox></ReviewBox>,
-                loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
-                
-
-            },
-            {
-                path : '/reviews',
-                element : <Review></Review>,
-                loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`) 
-
-            },
-            {
-                path : '/checkout/:id',
-                element : <CheckOut></CheckOut>,
-                loader :({params}) => fetch(`http://localhost:5000/services/${params.id}`)  
-            },
-            {
-                path : '/checkout',
-                element : <CheckOut></CheckOut>,
-                loader :() => fetch('http://localhost:5000/services')  
-            },
-            {
-                path : '/myreview',
-                element : <Review></Review>
-            },
-            {
-                path : '/allservice',
-                element : <PrivateRoute><AddService></AddService></PrivateRoute>
-            },
-            {
-                path : '/servicecheck/:id',
-                element : <AddCheckOut></AddCheckOut>,
-                loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`)  
-            }
-            
-
-
-
-        ]
-    }
-])
+	{
+		path: "/",
+		element: <Main></Main>,
+		errorElement: <ErrorPage></ErrorPage>,
+		children: [
+			{
+				path: "/",
+				element: <Home></Home>,
+			},
+			{
+				path: "/login",
+				element: <Login></Login>,
+			},
+			{
+				path: "/signup",
+				element: <SignUp></SignUp>,
+			},
+			{
+				path: "/blog",
+				element: <Blog></Blog>,
+			},
+			{
+				path: "/services",
+				element: <Services></Services>,
+			},
+			{
+				path: "/details/:id",
+				element: <ServiceDetails></ServiceDetails>,
+				loader: ({ params }) =>
+					fetch(
+						`https://assignment-11-server-omega.vercel.app/services/${params.id}`
+					),
+			},
+			{
+				path: "/reviewbox/:id",
+				element: <ReviewBox></ReviewBox>,
+				loader: ({ params }) =>
+					fetch(
+						`https://assignment-11-server-omega.vercel.app/services/${params.id}`
+					),
+			},
+			{
+				path: "/reviews",
+				element: <Review></Review>,
+				loader: ({ params }) =>
+					fetch(
+						`https://assignment-11-server-omega.vercel.app/services/${params.id}`
+					),
+			},
+			{
+				path: "/checkout/:id",
+				element: <CheckOut></CheckOut>,
+				loader: ({ params }) =>
+					fetch(
+						`https://assignment-11-server-omega.vercel.app/services/${params.id}`
+					),
+			},
+			{
+				path: "/checkout",
+				element: <CheckOut></CheckOut>,
+				loader: () =>
+					fetch("https://assignment-11-server-omega.vercel.app/services"),
+			},
+			{
+				path: "/myreview",
+				element: <Review></Review>,
+			},
+			{
+				path: "/allservice",
+				element: (
+					<PrivateRoute>
+						<AddService></AddService>
+					</PrivateRoute>
+				),
+			},
+			{
+				path: "/servicecheck/:id",
+				element: <AddCheckOut></AddCheckOut>,
+				loader: ({ params }) =>
+					fetch(
+						`https://assignment-11-server-omega.vercel.app/services/${params.id}`
+					),
+			},
+		],
+	},
+]);
 
 export default router;

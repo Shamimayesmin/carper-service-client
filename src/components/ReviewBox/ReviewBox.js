@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+
 
 const ReviewBox = ({ review, handleDelete }) => {
-	const { customer, _id, message , service } = review;
+	const { customer, _id, message, service } = review;
 
 	// const [details, setDetails] = useState({});
 
 	// const {user} = useContext(AuthContext)
 
 	// useEffect(()=>{
-	//     fetch(`http://localhost:5000/services/${service}`)
+	//     fetch(`https://assignment-11-server-omega.vercel.app/services/${service}`)
 	//     .then(res =>res.json())
 	//     .then(data => setDetails(data))
 	// },[service])

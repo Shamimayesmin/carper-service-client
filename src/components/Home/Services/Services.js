@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import useTitle from '../../../hook/useTitle';
-import ServiceCard from './ServiceCard';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import useTitle from "../../../hook/useTitle";
+import ServiceCard from "./ServiceCard";
 
 const Services = () => {
+	useTitle("Service");
 
-    useTitle('Service')
-    
-    const [services, setServices] = useState([])
-    useEffect( () =>{
-        fetch('http://localhost:5000/services')
-        .then((res) => res.json())
-        .then((data) => setServices(data))
-    },[]);
-    
+	const [services, setServices] = useState([]);
+	useEffect(() => {
+		fetch("https://assignment-11-server-omega.vercel.app/services")
+			.then((res) => res.json())
+			.then((data) => setServices(data));
+	}, []);
 
-    return (
-        <div>
+	return (
+		<div>
 			<div className="text-center mt-5">
 				<p className="text-2xl font-bold text-orange-600">Services</p>
 				<h2 className="text-5xl font-semibold">Quality wooden products</h2>
 				<p className="mt-5">
-				There is a number of service I provide since a many years.
-                <br />
-                You will get quality wooden product service.
+					There is a number of service I provide since a many years.
+					<br />
+					You will get quality wooden product service.
 				</p>
 			</div>
 
@@ -32,11 +30,11 @@ const Services = () => {
 					<ServiceCard key={service._id} service={service}></ServiceCard>
 				))}
 			</div>
-            {/* <div className='mb-20 flex justify-center'>
+			{/* <div className='mb-20 flex justify-center'>
                 <Link to='/services' className='rounded-lg bg-teal-400 py-5 px-6'><button className=''>See All</button></Link>
             </div> */}
 		</div>
-    );
+	);
 };
 
 export default Services;

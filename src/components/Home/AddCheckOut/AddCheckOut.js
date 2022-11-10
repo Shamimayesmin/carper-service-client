@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
-import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
-import useTitle from '../../../hook/useTitle';
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import useTitle from "../../../hook/useTitle";
 
 const AddCheckOut = () => {
-    const { title, price, _id } = useLoaderData();
+	const { title, price, _id } = useLoaderData();
 	const { user } = useContext(AuthContext);
-	useTitle('Checkout')
+	useTitle("Checkout");
 
 	const handlePlaceOrder = (event) => {
 		event.preventDefault();
@@ -35,7 +35,7 @@ const AddCheckOut = () => {
 
 		// }
 
-		fetch("http://localhost:5000/addService", {
+		fetch("https://assignment-11-server-omega.vercel.app/addService", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -53,9 +53,9 @@ const AddCheckOut = () => {
 			.catch((err) => console.error(err));
 	};
 
-    return (
-        <div>
-           <form onSubmit={handlePlaceOrder}>
+	return (
+		<div>
+			<form onSubmit={handlePlaceOrder}>
 				<h2 className="text-3xl">Add your service : {title}</h2>
 				<h4 className="text-2xl">price: {price}</h4>
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-7">
@@ -94,10 +94,14 @@ const AddCheckOut = () => {
 					placeholder="Your Message"
 				></textarea>
 
-				<input className="btn mt-4 mb-7" type="submit" value="Place your order" />
-			</form> 
-        </div>
-    );
+				<input
+					className="btn mt-4 mb-7"
+					type="submit"
+					value="Place your order"
+				/>
+			</form>
+		</div>
+	);
 };
 
 export default AddCheckOut;
