@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react";
-import useTitle from "../../../hook/useTitle";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import AddServiceCard from "./AddServiceCard";
+// import HomePageServiceCard from "./AddServiceCard";
 
 const AddService = () => {
-	const [addService, setAddService] = useState([]);
+	const { user } = useContext(AuthContext);
+	const [addservices, setAddServices] = useState([]);
+	console.log(user?.email);
+	console.log(addservices);
 
-	useTitle("AddService");
 	useEffect(() => {
-		fetch("https://assignment-11-server-omega.vercel.app/services")
+		fetch(
+			`https://assignment-11-server-omega.vercel.app/addService?email=${user?.email}`
+		)
 			.then((res) => res.json())
-			.then((data) => setAddService(data));
-	}, []);
+			.then((data) => setAddServices(data));
+	}, [user?.email]);
 
 
 	return (
@@ -21,19 +27,27 @@ const AddService = () => {
 				<p className="mt-5">
 					There is a number of service I provide since a many years.
 					<br />
-					You will get quality wooden product service.
+					You will get quality servive
 				</p>
 			</div>
 
 			<div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-32">
-				{addService.map((service) => (
-					<AddServiceCard key={service._id}
-					 service={service}
-					 
-					></AddServiceCard>
-				))}
+				{addservices
+					// .slice(-3)
+					// .reverse()
+					.map((serv) => (
+						<AddServiceCard
+							key={serv._id}
+							serv={serv}
+							
+						></AddServiceCard>
+					))}
 			</div>
-			
+			<div className="mb-20 flex justify-center">
+				<Link to="/services" className="rounded-lg bg-teal-400 py-5 px-6">
+					<button className="">See All</button>
+				</Link>
+			</div>
 		</div>
 	);
 };

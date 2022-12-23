@@ -1,18 +1,23 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../../hook/useTitle';
+import CheckOut from '../../CheckOut/CheckOut';
 import Review from '../../Review/Review';
+import CustomerReview from './CustomerReview';
+// import Review from '../../Review/Review';
 
 const ServiceDetails = () => {
 	useTitle('Details')
+	const [reviews, setReviews] = useState([]);
     const details = useLoaderData()
-    const {img, title, description, price} = details
-    console.log(details);
+    const {img, title, description, price , _id} = details
+    // console.log(details);
 	
-
+	console.log(reviews);
 	
     return (
         <div>
+
             <div className="card card-compact w-2/3 mx-auto bg-base-100 shadow-2xl mt-12">
 				<figure>
 					<img className="p-6 rounded-lg scale-100 hover:scale-110 ease-in duration-500" src={img} alt="Shoes" />
@@ -27,9 +32,20 @@ const ServiceDetails = () => {
 
 				
 			</div>
+
+			
+                
 			<div>
 				<Review></Review>
 
+			</div>
+
+
+			 <div>
+				<CheckOut></CheckOut>
+				{/* {
+					reviews.map(det=><CheckOut key={det._id} det={det} setReviews={setReviews}></CheckOut>)
+				} */}
 			</div>
 
     </div>

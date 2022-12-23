@@ -4,7 +4,8 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const CheckOut = () => {
-	const { title, price, _id } = useLoaderData();
+	// const { price, _id } = useLoaderData();
+	// console.log(title);
 
 	const { user } = useContext(AuthContext);
 
@@ -19,9 +20,9 @@ const CheckOut = () => {
 		const message = form.message.value;
 
 		const order = {
-			service: _id,
-			serviceName: title,
-			price,
+			// service: _id,
+			// serviceName: title,
+			// price,
 			customer: name,
 			email,
 			message,
@@ -44,7 +45,7 @@ const CheckOut = () => {
 			.catch((err) => console.error(err));
 	};
 	return (
-		<div>
+		<div className="w-2/3 mx-auto bg-slate-300 rounded-lg p-6 my-10">
 			<form onSubmit={handlePlaceOrder}>
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 					<input
@@ -66,12 +67,12 @@ const CheckOut = () => {
 
 				<textarea
 					name="message"
-					className="textarea textarea-bordered h-24 w-full"
+					className="textarea textarea-bordered h-24 w-full mt-5"
 					placeholder="Your Message"
 				></textarea>
 
 				<input
-					className="btn mt-4 mb-5"
+					className="btn mt-4 mb-5 bg-orange-400"
 					type="submit"
 					value="Place your Review"
 				/>

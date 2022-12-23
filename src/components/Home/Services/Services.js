@@ -6,13 +6,20 @@ import ServiceCard from "./ServiceCard";
 const Services = () => {
 	useTitle("Service");
 
+	const [loading, setLoading] = useState(true);
 	const [services, setServices] = useState([]);
 	useEffect(() => {
 		fetch("https://assignment-11-server-omega.vercel.app/services")
 			.then((res) => res.json())
-			.then((data) => setServices(data));
-	}, []);
+			.then((data) => {
+				setServices(data)
+				setLoading(false)
+			});
+	}, [setLoading]);
 
+	if (loading) {
+        return <div className='h-[60vh] flex items-center'><div className="mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin border-red-400"></div></div>
+    }
 	return (
 		<div>
 			<div className="text-center mt-5">

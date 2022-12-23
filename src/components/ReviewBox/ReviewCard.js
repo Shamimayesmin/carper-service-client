@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
-const ReviewBox = ({ review, handleDelete }) => {
-	const { customer, _id, message } = review;
+const ReviewCard = ({ review, handleDelete }) => {
+	const { customer, _id, message} = review;
 
-	
+	console.log(review);
 
 	return (
 		<div>
@@ -25,7 +26,7 @@ const ReviewBox = ({ review, handleDelete }) => {
 							</div>
 						</div>
 						<div className="flex items-center space-x-2 dark:text-yellow-500">
-							<span  className="btn">Edit</span>
+							<Link to={`/edit/${_id}`} className="btn">Edit</Link>
 							
 							<span onClick={() => handleDelete(_id)} className="btn">
 								Delete
@@ -41,4 +42,4 @@ const ReviewBox = ({ review, handleDelete }) => {
 	);
 };
 
-export default ReviewBox;
+export default ReviewCard;

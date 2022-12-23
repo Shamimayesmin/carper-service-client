@@ -3,12 +3,15 @@ import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 import useTitle from "../../hook/useTitle";
-import ReviewBox from "../ReviewBox/ReviewBox";
+import CheckOut from "../CheckOut/CheckOut";
+import ReviewCard from "../ReviewBox/ReviewCard";
+
 
 const Review = () => {
 	// const { _id} = useLoaderData()
 	const [reviews, setReviews] = useState([]);
 	const { user, logOut } = useContext(AuthContext);
+	const [loading, setLoading] = useState(true);
 
 	useTitle("MyReview");
 
@@ -31,6 +34,7 @@ const Review = () => {
 		}
 	};
 
+	console.log(reviews);
 	useEffect(() => {
 		fetch(
 			`https://assignment-11-server-omega.vercel.app/reviews?email=${user?.email}`,
@@ -47,45 +51,40 @@ const Review = () => {
 				}
 				return res.json();
 			})
-
+			// .then((res) => res.json())
 			.then((data) => {
 				console.log("recive", data);
 				setReviews(data);
+				setLoading(false)
 			});
 	}, [user?.email, logOut]);
 
+	
+    if (loading) {
+        return <div className='flex items-center'><div className="mx-auto w-16 h-16 border-4 border-dashed rounded-full animate-spin border-red-400"></div></div>
+    }
 	return (
 		<div>
 			<div className="grid grid-cols-1">
-				{reviews.length > 0 ? (
-					reviews.map((review) => (
-						<ReviewBox
-							key={review._id}
-							review={review}
-							handleDelete={handleDelete}
-						></ReviewBox>
-					))
+				{reviews?.length >0 ? (
+					<h2 className="text-3xl flex justify-center max-auto">Reviews</h2>
+					
 				) : (
-					<p className="text-3xl flex justify-center max-auto">No reviews</p>
+					<p className="text-3xl flex justify-center max-auto">No Reviews</p>
 				)}
 			</div>
-			<>
-				{user?.email ? (
-					<>
-						<div className="mb-20 flex justify-center mt-4">
-							<Link to="/checkout" className="rounded-lg bg-teal-400 py-5 px-6">
-								<button className=""> Add Review</button>
-							</Link>
-						</div>
-					</>
-				) : (
-					<div className="mb-20 flex justify-center mt-4">
-						<Link to="/login" className="rounded-lg bg-teal-400 py-5 px-6">
-							<button className="">Please login to add review</button>
-						</Link>
-					</div>
-				)}
-			</>
+
+			{
+				reviews?.map((review) => (
+					<ReviewCard
+						key={review._id}
+						review={review}
+						setReviews={setReviews}
+						handleDelete={handleDelete}
+					></ReviewCard>
+				))
+			}
+			
 		</div>
 	);
 };

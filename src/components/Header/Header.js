@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import headerLogo from '../../assets/images/logo/logo1a (1).jpg'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
@@ -7,12 +7,15 @@ const Header = () => {
 
 	const {user,logOut} = useContext(AuthContext)
 
-	
+	const location = useLocation();
+	const navigate = useNavigate();
+	const from = location.state?.from?.pathname || "/";
 
 	const handleLogOut = ()=>{
 		logOut()
 		.then()
 		.catch()
+		navigate(from, { replace: true });
 	}
 
     const menuItems = <>
@@ -25,7 +28,7 @@ const Header = () => {
 			// user?.email?
 			user?
 			<>
-				<li className="font-semibold"><Link to='/allservice'>Add Services</Link></li>
+				<li className="font-semibold"><Link to='/addService'>Add Services</Link></li>
 				<li className="font-semibold"><Link to='/myreview'>My Review</Link></li>
 				<li className="font-semibold">
 					<button onClick={handleLogOut} className="btn-ghost">Sign Out</button>
