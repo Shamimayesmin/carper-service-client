@@ -15,28 +15,27 @@ const AddCheckOut = () => {
 		event.preventDefault();
 
 		const form = event.target;
-		const name = form.name.value
-		const price = form.price.value
+		const name = form.name.value;
+		const price = form.price.value;
 		const email = user?.email || "unregistered";
 		const photo = form.photo.value;
 		const message = form.message.value;
-		const date = new Date()
+		const date = new Date();
 		// console.log(name,price, email, photo, message);
 
 		const orderService = {
 			name,
 			price,
-			
+
 			email,
 			photo,
 			message,
-			date
-		
+			date,
 		};
 
 		console.log(orderService);
 
-		fetch("http://localhost:5000/addService", {
+		fetch(" https://assignment-11-server-omega.vercel.app/addService", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -59,7 +58,7 @@ const AddCheckOut = () => {
 		<div className="w-2/3 mx-auto bg-slate-300 rounded-lg p-6 my-10">
 			<form onSubmit={handlePlaceOrder}>
 				<h2 className="text-3xl">Add your service</h2>
-				
+
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-7">
 					<input
 						name="name"
@@ -88,7 +87,6 @@ const AddCheckOut = () => {
 						className="input input-bordered w-full"
 						readOnly
 					/>
-					
 				</div>
 
 				<textarea

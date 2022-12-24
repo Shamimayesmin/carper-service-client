@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useTitle from "../../../hook/useTitle";
 import HomePageServiceCard from "./HomePageServiceCard";
-// import AddServiceCard from "./HomePageServiceCard";
+
 
 const HomePageService = () => {
 	const [addService, setAddService] = useState([]);

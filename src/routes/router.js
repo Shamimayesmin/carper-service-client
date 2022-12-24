@@ -60,14 +60,7 @@ const router = createBrowserRouter([
 						`https://assignment-11-server-omega.vercel.app/services/${params.id}`
 					),
 			},
-			// {
-			// 	path: "/reviews",
-			// 	element: <Review></Review>,
-			// 	loader: ({ params }) =>
-			// 		fetch(
-			// 			`https://assignment-11-server-omega.vercel.app/services/${params.id}`
-			// 		),
-			// },
+			
 			{
 				path: "/checkout/:id",
 				element: <CheckOut></CheckOut>,
@@ -90,21 +83,16 @@ const router = createBrowserRouter([
 			{
 				path: "/edit/:id",
 				loader: ({ params }) =>
-					fetch(`http://localhost:5000/edit/${params.id}`),
+					fetch(
+						` https://assignment-11-server-omega.vercel.app/edit/${params.id}`
+					),
 				element: <EditReview></EditReview>,
 			},
 			{
 				path: "/addService",
-				// element: (
-				// 	<PrivateRoute>
-				// 		<AddCheckOut></AddCheckOut>
-				// 	</PrivateRoute>
-				// ),
+				
 				element: <AddCheckOut></AddCheckOut>,
-				// loader: ({ params }) =>
-				// 	fetch(
-				// 		`https://assignment-11-server-omega.vercel.app/services/${params.id}`
-				// 	),
+				
 			},
 		],
 	},
