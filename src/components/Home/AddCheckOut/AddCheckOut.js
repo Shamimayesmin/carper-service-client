@@ -15,7 +15,7 @@ const AddCheckOut = () => {
 		event.preventDefault();
 
 		const form = event.target;
-		const name = form.name.value;
+		const title = form.name.value;
 		const price = form.price.value;
 		const email = user?.email || "unregistered";
 		const photo = form.photo.value;
@@ -24,7 +24,7 @@ const AddCheckOut = () => {
 		// console.log(name,price, email, photo, message);
 
 		const orderService = {
-			name,
+			title,
 			price,
 
 			email,

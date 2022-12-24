@@ -25,9 +25,7 @@ const HomePageServiceCard = ({service}) => {
 				</p>
 				<p className="text-lg text-orange-400">Rating : {4.5}</p>
 				<div className="card-actions justify-end">
-					{/* <Link to={`/servicecheck/${_id}`}>
-						<button className="btn btn-primary">Add service</button>
-					</Link> */}
+					
 					<Link to={`/details/${_id}`}>
 						<button className="btn bg-amber-600">View details</button>
 					</Link>

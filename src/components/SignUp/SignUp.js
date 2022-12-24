@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/loginimage.jpg'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../hook/useTitle';
@@ -7,8 +7,11 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 
 const SignUp = () => {
 	const {createUser} = useContext(AuthContext)
-
+	
 	useTitle('Signup')
+	const location = useLocation();
+	const navigate = useNavigate();
+	const from = location.state?.from?.pathname || "/";
 	const handleSignUp = event =>{
         event.preventDefault()
 
@@ -23,6 +26,7 @@ const SignUp = () => {
             const user = result.user;
             console.log(user)
 			form.reset();
+			navigate(from, { replace: true });
         })
         .catch(err =>console.log(err))
     }

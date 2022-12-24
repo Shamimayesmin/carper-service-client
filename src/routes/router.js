@@ -5,7 +5,6 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import AddCheckOut from "../components/Home/AddCheckOut/AddCheckOut";
 
 import Home from "../components/Home/Home/Home";
-// import HomePageService from "../components/Home/AddService/AddService";
 import ServiceDetails from "../components/Home/Services/ServiceDetails";
 import Services from "../components/Home/Services/Services";
 
@@ -49,7 +48,7 @@ const router = createBrowserRouter([
 				element: <ServiceDetails></ServiceDetails>,
 				loader: ({ params }) =>
 					fetch(
-						`https://assignment-11-server-omega.vercel.app/services/${params.id}`
+						`http://localhost:5000/services/${params.id}`
 					),
 			},
 			{

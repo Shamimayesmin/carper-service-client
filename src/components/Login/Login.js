@@ -25,7 +25,7 @@ const Login = () => {
 				const user = result.user;
 				console.log(user);
 				form.reset();
-				// navigate(from, {replace : true})
+				
 
 				const currentUser = {
 					email: user.email,
@@ -48,8 +48,7 @@ const Login = () => {
 						navigate(from, { replace: true });
 					});
 
-				// navigate before create token
-				// navigate(from,{replace: true})
+				
 			})
 			.catch((error) => console.log(error));
 	};

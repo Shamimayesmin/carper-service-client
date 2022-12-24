@@ -1,55 +1,49 @@
-import React, { useEffect, useState} from 'react';
-import { useLoaderData } from 'react-router-dom';
-import useTitle from '../../../hook/useTitle';
-import CheckOut from '../../CheckOut/CheckOut';
-import Review from '../../Review/Review';
-import CustomerReview from './CustomerReview';
-// import Review from '../../Review/Review';
+import React from "react";
+import { useLoaderData } from "react-router-dom";
+import useTitle from "../../../hook/useTitle";
+import CheckOut from "../../CheckOut/CheckOut";
+import Review from "../../Review/Review";
 
 const ServiceDetails = () => {
-	useTitle('Details')
-	const [reviews, setReviews] = useState([]);
-    const details = useLoaderData()
-    const {img, title, description, price , _id} = details
-    // console.log(details);
-	
-	console.log(reviews);
-	
-    return (
-        <div>
+	useTitle("Details");
 
-            <div className="card card-compact w-2/3 mx-auto bg-base-100 shadow-2xl mt-12">
-				<figure>
-					<img className="p-6 rounded-lg scale-100 hover:scale-110 ease-in duration-500" src={img} alt="Shoes" />
-				</figure>
-				<div className="card-body">
-					<h2 className="card-title">{title}</h2>
-					<p className="">{description}</p>
-					<p className="text-2xl text-orange-600 font-semibold">Price : ${price}</p>
-					<p className='text-lg text-orange-400'>Rating : {4.5}</p>
-					
+	const details = useLoaderData();
+
+	// console.log(details);
+	return (
+		<div>
+			{details.map((item) => (
+				<div key={item._id}>
+					<div className="card card-compact w-2/3 mx-auto bg-base-100 shadow-2xl mt-12">
+						<figure>
+							<img
+								className="p-6 rounded-lg scale-100 hover:scale-110 ease-in duration-500"
+								src={item.photo}
+								alt="Shoes"
+							/>
+						</figure>
+						<div className="card-body">
+							<h2 className="card-title">{item.title}</h2>
+							<p className="">{item.message}</p>
+							<p className="text-2xl text-orange-600 font-semibold">
+								Price : ${item.price}
+							</p>
+							<p className="text-lg text-orange-400">Rating : {4.5}</p>
+						</div>
+					</div>
 				</div>
-
-				
-			</div>
+			))}
 
 			
-                
 			<div>
 				<Review></Review>
-
 			</div>
 
-
-			 <div>
+			<div>
 				<CheckOut></CheckOut>
-				{/* {
-					reviews.map(det=><CheckOut key={det._id} det={det} setReviews={setReviews}></CheckOut>)
-				} */}
 			</div>
-
-    </div>
-    );
+		</div>
+	);
 };
 
 export default ServiceDetails;

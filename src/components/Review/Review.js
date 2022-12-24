@@ -35,29 +35,30 @@ const Review = () => {
 	};
 
 	console.log(reviews);
-	useEffect(() => {
-		fetch(
-			`https://assignment-11-server-omega.vercel.app/reviews?email=${user?.email}`,
-			{
-				// jwt token access
-				headers: {
-					authorization: `Bearer ${localStorage.getItem("carper-token")}`,
-				},
-			}
-		)
-			.then((res) => {
-				if (res.status === 401 || res.status === 403) {
-					return logOut();
-				}
-				return res.json();
-			})
-			// .then((res) => res.json())
-			.then((data) => {
-				console.log("recive", data);
-				setReviews(data);
-				setLoading(false)
-			});
-	}, [user?.email, logOut]);
+	// useEffect(() => {
+	// 	fetch(
+	// 		`https://assignment-11-server-omega.vercel.app/reviews?email=${user?.email}`,
+	// 		{
+	// 			// jwt token access
+	// 			headers: {
+	// 				authorization: `Bearer ${localStorage.getItem("carper-token")}`,
+	// 			},
+	// 		}
+	// 	)
+		
+	// 		.then((res) => {
+	// 			if (res.status === 401 || res.status === 403) {
+	// 				return logOut();
+	// 			}
+	// 			return res.json();
+	// 		})
+			
+	// 		.then((data) => {
+	// 			console.log("recive", data);
+	// 			setReviews(data);
+	// 			setLoading(false)
+	// 		});
+	// }, [user?.email, logOut]);
 
 	
     if (loading) {
