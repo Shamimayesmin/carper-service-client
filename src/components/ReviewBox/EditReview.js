@@ -8,7 +8,7 @@ const EditReview = () => {
 	const { _id, message } = customerReviwe;
 	// console.log(customerReviwe);
 
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const handleUpdateReview = (event) => {
 		event.preventDefault();
@@ -26,7 +26,7 @@ const EditReview = () => {
 				if (data.matchedCount > 0) {
 					toast.success("Review updated");
 					event.target.reset();
-					navigate("/reviews");
+					// navigate("/reviews");
 				}
 			});
 	};

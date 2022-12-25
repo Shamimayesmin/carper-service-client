@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {} from "react";
 import { Link } from "react-router-dom";
 
 
 const ReviewCard = ({ review, handleDelete }) => {
 	const { customer, _id, message} = review;
 
-	console.log(review);
+	// console.log(review);
 
 	return (
 		<div>

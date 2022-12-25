@@ -48,7 +48,7 @@ const router = createBrowserRouter([
 				element: <ServiceDetails></ServiceDetails>,
 				loader: ({ params }) =>
 					fetch(
-						`http://localhost:5000/services/${params.id}`
+						`https://assignment-11-server-omega.vercel.app/services/${params.id}`
 					),
 			},
 			{
