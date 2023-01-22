@@ -13,8 +13,8 @@ import Review from "../components/Review/Review";
 import ReviewBox from "../components/ReviewBox/ReviewCard";
 import SignUp from "../components/SignUp/SignUp";
 import Main from "../layout/Main";
-import PrivateRoute from "./PrivateRoute";
-import AddService from "../components/Home/AddService/AddService";
+// import PrivateRoute from "./PrivateRoute";
+// import AddService from "../components/Home/AddService/AddService";
 import EditReview from "../components/ReviewBox/EditReview";
 
 const router = createBrowserRouter([
